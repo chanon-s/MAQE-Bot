@@ -14,7 +14,6 @@ exports.splitDirectionPoint = splitDirectionPoint;
 const directionCodeToDegree = (directionCodes, startDegree = 0) => {
     let degree = startDegree;
     directionCodes.match(/\w/g)?.forEach((directionCode) => {
-        console.log('directionCode', directionCode);
         switch (directionCode) {
             case 'L':
                 degree += 90;
