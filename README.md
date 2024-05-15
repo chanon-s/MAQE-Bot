@@ -1,8 +1,14 @@
 # MAQE-Bot
 
-## Minimum requirement
+## Minimum system requirements
 
 NodeJS version 18 or above.
+
+## Build
+```bash
+npm install
+npm run build
+```
 
 ## How to Run
 
