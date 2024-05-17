@@ -4,13 +4,23 @@
 
 NodeJS version 18 or above.
 
-## Build
+
+## How to 
+
+### Build
+
 ```bash
 npm install
 npm run build
 ```
 
-## How to Run
+### Unit Test
+
+```bash
+npm run test
+```
+
+### Run
 
 ```bash
 node index.js RW15RW1

@@ -1,18 +1,31 @@
 import { describe, expect, test } from '@jest/globals';
 import { calcXYDirection } from '../src/maqe-bot';
+import { Vector } from '../src/types';
+import { Direction } from '../src/enums';
+import { vectorText } from '../src/utils';
+
+describe('test vectorText', () => {
+    test('input x=100, y=-50, direction=North should be return "X: 100 Y: -50 Direction: North"', () => {
+        const vector: Vector = { x: 100, y: -50, direction: Direction.North }
+        const output = vectorText(vector);
+        expect(output).toEqual("X: 100 Y: -50 Direction: North");
+    })
+})
 
 describe('test calcXYDirection', () => {
-    test('command is RW15RW1 should be equal X: 15 Y: -1 Direction: South', () => {
-        const result = calcXYDirection('RW15RW1');
-        expect(result.x).toEqual(15);
-        expect(result.y).toEqual(-1);
-        expect(result.direction).toEqual('South');
+
+    test.each([
+        ['RW15RW1', 15, -1, 'South'],
+        ['W5RW5RW2RW1R', 4, 3, 'North'],
+        ['RRW11RLLW19RRW12LW1', 7, -12, 'South'],
+        ['LLW100W50RW200W10', -210, -150, 'West'],
+        ['LLLLLW99RRRRRW88LLLRL', -99, 88, 'East'],
+        ['W55555RW555555W444444W1', 1000000, 55555, 'East']
+    ])('command is %s should be equal X: %d Y: %d Direction: %s', (cmd, x, y, d) => {
+        const result = calcXYDirection(cmd);
+        expect(result.x).toEqual(x);
+        expect(result.y).toEqual(y);
+        expect(result.direction).toEqual(d);
     });
 
-    test('command is W5RW5RW2RW1R should be equal X: 4 Y: 3 Direction: North', () => {
-        const result = calcXYDirection('W5RW5RW2RW1R');
-        expect(result.x).toEqual(4);
-        expect(result.y).toEqual(3);
-        expect(result.direction).toEqual('North');
-    });
 })

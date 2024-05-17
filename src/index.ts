@@ -1,5 +1,7 @@
 import { calcXYDirection } from "./maqe-bot";
 import { argv } from 'process'
+import { vectorText } from "./utils";
 
-const output = calcXYDirection(argv[2]);
-console.log('X: %d Y: %d Direction: %s', output.x, output.y, output.direction);
+const vector = calcXYDirection(argv[2]);
+const output = vectorText(vector);
+console.log(output);

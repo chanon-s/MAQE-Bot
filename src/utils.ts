@@ -1,3 +1,5 @@
+import { Vector } from "./types";
+
 export const splitCommand = (inputCmd: string) => {
     return inputCmd.match(/([RL]?)+(W[0-9]+)?/g) || [];
 }
@@ -28,4 +30,8 @@ export const directionCodeToDegree = (directionCodes: string, startDegree: numbe
         degree += 360;
     }
     return degree;
+}
+
+export const vectorText = (vector: Vector) => {
+    return `X: ${vector.x} Y: ${vector.y} Direction: ${vector.direction}`;
 }

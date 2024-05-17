@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.directionCodeToDegree = exports.splitDirectionPoint = exports.splitCommand = void 0;
+exports.vectorText = exports.directionCodeToDegree = exports.splitDirectionPoint = exports.splitCommand = void 0;
 const splitCommand = (inputCmd) => {
     return inputCmd.match(/([RL]?)+(W[0-9]+)?/g) || [];
 };
@@ -32,4 +32,8 @@ const directionCodeToDegree = (directionCodes, startDegree = 0) => {
     return degree;
 };
 exports.directionCodeToDegree = directionCodeToDegree;
+const vectorText = (vector) => {
+    return `X: ${vector.x} Y: ${vector.y} Direction: ${vector.direction}`;
+};
+exports.vectorText = vectorText;
 //# sourceMappingURL=utils.js.map
